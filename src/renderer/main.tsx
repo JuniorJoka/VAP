@@ -1,7 +1,21 @@
+/*
+|----------------------------------------------------------------------------------------
+|React and Router
+|----------------------------------------------------------------------------------------
+*/
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
-const Index = () => {
-  return <div>Hello React!</div>;
-};
-ReactDOM.render(<Index />, document.getElementById("app"));
+/*
+|----------------------------------------------------------------------------------------
+|Render the app
+|----------------------------------------------------------------------------------------
+*/
+
+ReactDOM.render(
+  <Provider store={store}></Provider>,
+  document.getElementById("app")
+);
