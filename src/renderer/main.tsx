@@ -16,6 +16,6 @@ import store from "./store/store";
 */
 
 ReactDOM.render(
-  <Provider store={store}></Provider>,
+  <React.StrictMode></React.StrictMode>,
   document.getElementById("app")
 );
