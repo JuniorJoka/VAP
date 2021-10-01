@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = [
   {
     mode: "development",
-    entry: "./src/electron.ts",
+    entry: "./src/main/electron.ts",
     target: "electron-main",
     module: {
       rules: [
@@ -21,7 +21,7 @@ module.exports = [
   },
   {
     mode: "development",
-    entry: "./src/react.tsx",
+    entry: "./src/renderer/main.tsx",
     target: "electron-renderer",
     devtool: "source-map",
     module: {
