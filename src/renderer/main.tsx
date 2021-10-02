@@ -8,6 +8,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import globalStyle from "./styles/globalStyle";
 
 /*
 |----------------------------------------------------------------------------------------
@@ -25,7 +26,9 @@ import GlobalStyle from "./styles/globalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}></Provider>
+    <Provider store={store}>
+      <GlobalStyle />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("app")
 );
