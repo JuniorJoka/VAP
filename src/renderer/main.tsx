@@ -24,6 +24,8 @@ import GlobalStyle from "./styles/globalStyle";
 */
 
 ReactDOM.render(
-  <React.StrictMode></React.StrictMode>,
+  <React.StrictMode>
+    <Provider store={store}></Provider>
+  </React.StrictMode>,
   document.getElementById("app")
 );
