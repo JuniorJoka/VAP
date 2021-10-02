@@ -1,11 +1,13 @@
 import * as React from "react";
-import { Switch } from "react-router-dom";
+import { BrowserRouter as ReactRouter, Switch } from "react-router-dom";
 import { Vap } from "./App";
 
 export const Router: React.FC = () => {
   return (
-    <Vap>
-      <Switch></Switch>
-    </Vap>
+    <ReactRouter>
+      <Vap>
+        <Switch></Switch>
+      </Vap>
+    </ReactRouter>
   );
 };
