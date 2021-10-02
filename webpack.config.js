@@ -37,6 +37,9 @@ module.exports = [
       path: __dirname + "/dist",
       filename: "react.js",
     },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js", "jsx"],
+    },
     plugins: [
       new HtmlWebpackPlugin({
         template: "./public/index.html",
