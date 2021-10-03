@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import Toasts from "./components/Toasts/Toasts";
+
 /*
 |----------------------------------------------------------------------------------------
 |The App
@@ -11,7 +13,7 @@ export const Vap: React.FC = ({ children }) => {
     <>
       {children}
       {/* Footer Goes Here */}
-      {/* Toast Menu goes here */}
+      <Toasts />
       {/* SubTitle Menu goes here */}
       {/* Player Aux goes here */}
     </>
