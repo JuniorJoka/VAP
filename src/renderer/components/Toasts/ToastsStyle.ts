@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-const ToastMenu = styled.div``;
+export const ToastMenu = styled.div``;
