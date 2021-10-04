@@ -4,7 +4,7 @@ import store from "../store";
 // Remove toast before timeout
 export const remove = (_id: number): void => {
   store.dispatch({
-    type: ToastActions,
+    type: ToastActions.TOAST_REMOVE,
     payload: { _id, title: "", content: "" },
   });
 };
