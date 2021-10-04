@@ -10,11 +10,7 @@ export const remove = (_id: number): void => {
 };
 
 // Add a toast
-export const add = (
-  title: string,
-  content: string,
-  duration: number = 3000
-): void => {
+export const add = (title: string, content: string, duration: number = 3000): void => {
   const _id = Date.now();
   const toast = { _id, title, content };
 

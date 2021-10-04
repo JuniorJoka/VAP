@@ -4,10 +4,7 @@ import { Toast, ToastsAction } from "../../../shared/types/vap";
 type ToastState = Toast[];
 const initialState: ToastState = [];
 
-export const toasts = (
-  state = initialState,
-  action: ToastsAction
-): ToastState => {
+export const toasts = (state = initialState, action: ToastsAction): ToastState => {
   switch (action.type) {
     case ToastActions.TOAST_ADD: {
       const toasts = [...state, action.payLoad];
