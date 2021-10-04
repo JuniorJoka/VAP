@@ -2,12 +2,12 @@ import { ToastActions } from "./action-types";
 
 export interface Action {
   type: string;
-  payLoad: any;
+  payload: any;
 }
 
 export interface ToastsAction extends Action {
   type: ToastActions;
-  payLoad: Toast;
+  payload: Toast;
 }
 
 export interface Toast {
