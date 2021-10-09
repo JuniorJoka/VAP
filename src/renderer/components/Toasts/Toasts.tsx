@@ -1,4 +1,5 @@
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { connect } from "react-redux";
 
 import { Toast } from "../../../shared/types/vap";
@@ -13,11 +14,12 @@ interface InjectedProps {
 
 const Toasts: React.FC<InjectedProps> = ({ toasts }) => {
   return (
+    createPortal(
     <ToastMenu>
       {toasts.map((toast) => (
         <ToastItem key={toast._id} toast={toast}></ToastItem>
       ))}
-    </ToastMenu>
+    </ToastMenu>, document.getElementById('toast'))
   );
 };
 
