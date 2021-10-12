@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Toast as ToastType } from "../../shared/types/vap";
+import { Toast as ToastType } from "../../../shared/types/vap";
 import { Content, Title, Toast } from "./ToastStyle";
 
 interface Props {
