@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { connect } from "react-redux";
 
 import { Toast } from "../../../shared/types/vap";
-import { ToastItem } from "../../elements/Toast";
+import { ToastItem } from "../../elements/ToastItem";
 import { RootState } from "../../store/reducers";
 
 import { ToastMenu } from "./ToastsStyle";
@@ -13,13 +13,13 @@ interface InjectedProps {
 }
 
 const Toasts: React.FC<InjectedProps> = ({ toasts }) => {
-  return (
-    createPortal(
+  return createPortal(
     <ToastMenu>
       {toasts.map((toast) => (
         <ToastItem key={toast._id} toast={toast}></ToastItem>
       ))}
-    </ToastMenu>, document.getElementById('toast'))
+    </ToastMenu>,
+    document.getElementById("toast")
   );
 };
 
