@@ -16,4 +16,8 @@ div#toast{
     left: 0;
     top: 0;
     bottom: 0;
+}
+
+div#app{
+    height: 100vh;
 }`;
