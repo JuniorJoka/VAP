@@ -16,7 +16,7 @@ export const Vap: React.FC = ({ children }) => {
     <Wrapper>
       <Main>{children}</Main>
       <Footer />
-      <Toasts />
+      {/* <Toasts /> */}
       {/* SubTitle Menu goes here */}
       {/* Player Aux goes here */}
     </Wrapper>

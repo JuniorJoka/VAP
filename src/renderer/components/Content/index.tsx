@@ -1,7 +1,14 @@
 import * as React from "react";
 
-import { Wrapper } from "./ContentStyle";
+import { Header, SubHead, SubHeadNavigation, Wrapper } from "./ContentStyle";
 
 export const Content = () => {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <Header />
+      <SubHead>
+        <SubHeadNavigation />
+      </SubHead>
+    </Wrapper>
+  );
 };

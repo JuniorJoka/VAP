@@ -1,7 +1,29 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: beige;
   height: 100%;
-  width: 100px;
+  width: 200px;
+  border: 1px solid black;
+`;
+
+export const Logo = styled.div`
+  border: 1px solid black;
+  width: 90%;
+  margin: 10px;
+  height: 40px;
+`;
+
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 90%;
+  margin: 10px;
+`;
+
+export const Tab = styled.div`
+  border: 1px solid black;
+  width: 90%;
+  margin: 10px;
+  height: 40px;
 `;
