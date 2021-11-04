@@ -7,7 +7,7 @@ export const SideNav = () => {
       <Logo />
       <Section>
         {[...Array(5)].map((_, idx) => (
-          <Tab />
+          <Tab key={idx} />
         ))}
       </Section>
     </Wrapper>
