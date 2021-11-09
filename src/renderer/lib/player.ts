@@ -1,65 +1,66 @@
-class AudioPlayer {
-  audio: HTMLAudioElement;
-
-  constructor(options?) {
-    this.audio = new Audio();
-  }
-  async play() {
-    if (!this.audio.src) throw Error("Trying to play a track but no audio.src is defined");
-
-    await this.audio.play();
+class Player {
+  media: HTMLAudioElement | HTMLVideoElement;
+  constructor(media: HTMLAudioElement | HTMLVideoElement) {
+    this.media = media;
   }
 
-  pause() {
-    this.audio.pause();
+  getMedia() {
+    return this.media;
   }
 
-  mute() {
-    this.audio.muted = true;
+  async play(): Promise<void> {
+    if (!this.media.src) {
+      throw new Error("");
+    }
+    await this.media.play();
   }
 
-  unmute() {
-    this.audio.muted = false;
+  pause(): void {
+    this.media.pause;
   }
 
-  getAudio() {
-    return this.audio;
+  mute(): void {
+    this.media.muted = true;
   }
 
-  getCurrentTime() {
-    return this.audio.currentTime;
+  unmute(): void {
+    this.media.muted = false;
   }
 
-  getVolume() {
-    return this.audio.volume;
+  getCurrentTime(): number {
+    return this.media.currentTime;
   }
 
-  getSrc() {
-    return this.audio.src;
+  getVolume(): number {
+    return this.media.volume;
   }
 
-  setAudioVolume(volume: number) {
-    this.audio.volume = volume;
+  getSrc(): string {
+    return this.media.src;
   }
 
-  setAudioPlaybackRate(playbackRate: number) {
-    this.audio.playbackRate = playbackRate;
-    this.audio.defaultPlaybackRate = playbackRate;
+  setSrc(src: string): void {
+    this.media.src = src;
   }
 
-  setAudioSrc(src: string) {
-    this.audio.src = src;
+  setVolume(volume: number): void {
+    this.media.volume = volume;
   }
 
-  isPaused() {
-    return this.audio.paused;
+  setCurrentTime(time: number): void {
+    this.media.currentTime = time;
   }
 
-  isMuted() {
-    return this.audio.muted;
+  isMuted(): Boolean {
+    return this.media.muted;
   }
 
-  setAudioCurrentTime(currentTime: number) {
-    this.audio.currentTime = currentTime;
+  isPaused(): Boolean {
+    return this.media.paused;
+  }
+
+  setPlaybackRate(playbackRate: number): void {
+    this.media.playbackRate = playbackRate;
+    this.media.defaultPlaybackRate = playbackRate;
   }
 }
