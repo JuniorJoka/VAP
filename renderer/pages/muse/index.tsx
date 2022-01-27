@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Content } from "../../components/Muse/Content";
+import { Content } from "../../components/Content";
 import { SideBar } from "../../components/SideBar";
 
 const Index = () => {
