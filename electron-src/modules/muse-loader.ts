@@ -6,6 +6,8 @@ import * as mmd from "music-metadata";
 
 import Module from "./module";
 import { MuseMeta } from "../../shared/types/moth";
+import { ipcMain } from "electron";
+import channel from "../../shared/lib/ipc-channels";
 
 class MuseLoaderModule extends Module {
   private seekFolders: string[];
@@ -19,8 +21,7 @@ class MuseLoaderModule extends Module {
     this.trackList = [];
   }
   async load(): Promise<void> {
-    await this.getAllMuse()
-
+    ipcMain.handle(channel.muse.READY, this.getAllMuse);
   }
 
   async getAllMuse(): Promise<void> {
