@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Track } from "../Track";
+import { TrackList } from "../TrackList";
 
 enum MuseView {
   MuseTracksView,
@@ -14,7 +14,7 @@ export const Content = () => {
   const isAlbumsView = view === MuseView.MUseAlbumsView;
 
   return (
-    <div className="flex-grow p-4 overflow-y-scroll">
+    <div className="flex-grow p-4 overflow-y-scroll scrollbar-hide">
       <h1 className="text-4xl">My Muse</h1>
       <div className="flex space-x-3 mt-2">
         <h3
@@ -38,7 +38,7 @@ export const Content = () => {
       </div>
       <hr />
 
-      {isTracksView && <div>Tracks</div>}
+      {isTracksView && <TrackList />}
       {isArtistsView && <div>Artists</div>}
       {isAlbumsView && <div>Albums</div>}
     </div>
