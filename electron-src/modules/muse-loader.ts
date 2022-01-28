@@ -21,7 +21,11 @@ class MuseLoaderModule extends Module {
     this.trackList = [];
   }
   async load(): Promise<void> {
-    ipcMain.handle(channel.muse.READY, this.getAllMuse);
+    ipcMain.handle(channel.muse.READY, async () => {
+      await this.getAllMuse();
+      const result = await this.getMuseMeta();
+      return result;
+    });
   }
 
   async getAllMuse(): Promise<void> {
