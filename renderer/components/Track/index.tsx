@@ -1,4 +1,6 @@
-export const Track = () => {
+import { MuseMeta } from "../../../shared/types/moth";
+
+export const Track = ({ track }: { track: MuseMeta }) => {
   return (
     <div className="hover:bg-gray-100 rounded-lg p-3 pr-6 pl-6 grid grid-cols-2 cursor-pointer align hover:shadow-md">
       <div className="flex items-center space-x-3  w-64">
