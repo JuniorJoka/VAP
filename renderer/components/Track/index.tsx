@@ -6,13 +6,13 @@ export const Track = ({ track }: { track: MuseMeta }) => {
       <div className="flex items-center space-x-3  w-64">
         <div className="w-10 h-10 bg-slate-500" />
         <div>
-          <p className="font-bold">Am I wrong</p>
-          <p className="text-sm">Nico and Vince</p>
+          <p className="font-bold">{track.title}</p>
+          <p className="text-sm">{track.artist}</p>
         </div>
       </div>
       <div className="ml-0 flex justify-between items-center">
-        <p>Wonders of Ellison</p>
-        <p>4:45</p>
+        <p>{track.album}</p>
+        <p>{track.duration}</p>
       </div>
     </div>
   );
