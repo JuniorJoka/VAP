@@ -1,11 +1,12 @@
 import { MuseMeta } from "../../../shared/types/moth";
 
-interface keyMap<T> {
-  [key: string]: T;
-}
 export interface MuseState {
   Muse: MuseMeta[];
-  MuseByAlbum: keyMap<MuseMeta>;
-  MuseByArtist: keyMap<MuseMeta>;
+  MuseByAlbum: MuseMapper;
+  MuseByArtist: MuseMapper;
   populateMuse: VoidFunction;
+  groupByAlbum: VoidFunction;
+  groupByArtist: VoidFunction;
 }
+
+export type MuseMapper = Map<string, Map<string, MuseMeta[]>>;
