@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AlbumsView } from "../AlbumsView";
+import { ArtistsView } from "../ArtistsView";
 import { TrackList } from "../TrackList";
 
 enum MuseView {
@@ -39,8 +41,8 @@ export const Content = () => {
       <hr />
 
       {isTracksView && <TrackList />}
-      {isArtistsView && <div>Artists</div>}
-      {isAlbumsView && <div>Albums</div>}
+      {isArtistsView && <ArtistsView />}
+      {isAlbumsView && <AlbumsView />}
     </div>
   );
 };
