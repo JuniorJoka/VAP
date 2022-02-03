@@ -22,6 +22,7 @@ app.on("ready", async () => {
       nodeIntegration: false,
       contextIsolation: false,
       preload: join(__dirname, "preload.js"),
+      webSecurity: false,
     },
   });
 
