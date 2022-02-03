@@ -16,7 +16,7 @@ export class Player {
   }
 
   pause(): void {
-    this.media.pause;
+    this.media.pause();
   }
 
   mute(): void {
