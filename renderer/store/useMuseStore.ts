@@ -1,5 +1,6 @@
 import create from "zustand";
 import channel from "../../shared/lib/ipc-channels";
+import { MuseMeta } from "../../shared/types/moth";
 import { MuseMapper, MuseState } from "../lib/types";
 
 export default create<MuseState>((set, get) => ({
@@ -8,6 +9,8 @@ export default create<MuseState>((set, get) => ({
   MuseByArtist: new Map(),
 
   MuseByAlbum: new Map(),
+
+  activeMuse: undefined,
 
   populateMuse: async () => {
     const Muse = await (global.ipcRenderer as Electron.IpcRenderer).invoke(channel.muse.READY);
@@ -64,5 +67,9 @@ export default create<MuseState>((set, get) => ({
     });
 
     set({ MuseByAlbum });
+  },
+
+  setActiveMuse: (muse: MuseMeta) => {
+    set({ activeMuse: muse });
   },
 }));
