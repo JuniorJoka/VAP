@@ -1,4 +1,5 @@
 import { MuseMeta } from "../../shared/types/moth";
+import { AudioPlayer } from "../lib/audioPayer";
 import { MuseMapper } from "../lib/types";
 
 export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
@@ -24,4 +25,18 @@ export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
   });
 
   return MuseBy;
+};
+
+export const Actions = {
+  get: {
+    next: (size: number, currIndex: number): number => (currIndex + 1) % size,
+    previous: (size: number, currIndex: number): number => (currIndex - 1 < 0 ? size - 1 : currIndex - 1),
+  },
+  playPause: async (player: AudioPlayer) => {
+    if (player.isPaused()) {
+      await player.play();
+    } else {
+      player.pause();
+    }
+  },
 };
