@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { MuseMeta } from "../../shared/types/moth";
 import { AudioPlayer } from "../lib/audioPayer";
-import { MuseState } from "../lib/types";
+import { MuseState, PlayerActions } from "../lib/types";
 import useMuseStore from "../store/useMuseStore";
 
-const selector = (state: MuseState): [MuseMeta, AudioPlayer] => [state.activeMuse, state.player];
+const selector = (state: MuseState): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>] => [
+  state.activeMuse,
+  state.player,
+  state.emit,
+];
 
-export const useMuseControls = (): [MuseMeta, AudioPlayer, () => Promise<void>] => {
-  const [active, player] = useMuseStore(selector);
+export const useMuseControls = (): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>] => {
+  const [active, player, emit] = useMuseStore(selector);
 
   useEffect(() => {
     if (active) {
@@ -15,13 +19,5 @@ export const useMuseControls = (): [MuseMeta, AudioPlayer, () => Promise<void>] 
     }
   }, [active]);
 
-  const playPause = async () => {
-    if (player.isPaused()) {
-      await player.play();
-    } else {
-      player.pause();
-    }
-  };
-
-  return [active, player, playPause];
+  return [active, player, emit];
 };
