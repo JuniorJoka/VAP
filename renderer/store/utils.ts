@@ -1,6 +1,6 @@
 import { MuseMeta } from "../../shared/types/moth";
 import { AudioPlayer } from "../lib/audioPayer";
-import { MuseMapper } from "../lib/types";
+import { MuseMapper, PlayState } from "../lib/types";
 
 export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
   const MuseBy: MuseMapper = new Map();
@@ -32,11 +32,13 @@ export const Actions = {
     next: (size: number, currIndex: number): number => (currIndex + 1) % size,
     previous: (size: number, currIndex: number): number => (currIndex - 1 < 0 ? size - 1 : currIndex - 1),
   },
-  playPause: async (player: AudioPlayer) => {
+  playPause: async (player: AudioPlayer, set: (playState: PlayState) => void) => {
     if (player.isPaused()) {
       await player.play();
+      set(PlayState.playing);
     } else {
       player.pause();
+      set(PlayState.paused);
     }
   },
 };
