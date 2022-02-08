@@ -22,7 +22,7 @@ export default create<MuseState>((set, get) => ({
   playState: PlayState.paused,
 
   populateMuse: async () => {
-    const Muse = await (global.ipcRenderer as Electron.IpcRenderer).invoke(channel.muse.READY);
+    const Muse = await global.ipcRenderer.invoke(channel.muse.READY);
     set({ Muse });
   },
 
@@ -36,7 +36,9 @@ export default create<MuseState>((set, get) => ({
     set({ MuseByAlbum });
   },
 
-  setActiveMuse: (muse: MuseMeta, index: number) => set({ activeMuse: muse, activeMuseIndex: index }),
+  setActiveMuse: async (muse: MuseMeta, index: number) => {
+    set({ activeMuse: muse, activeMuseIndex: index });
+  },
 
   initializePlayer: () => set({ player: new AudioPlayer() }),
 
@@ -47,20 +49,27 @@ export default create<MuseState>((set, get) => ({
   emit: async (action: PlayerActions) => {
     const activePlaylist = get().activePlayList;
     const activeIndex = get().activeMuseIndex;
-
     if (!activePlaylist) return;
 
-    if (action === PlayerActions.next) {
-      const nextActiveIndex = Actions.get.next(activePlaylist.length, activeIndex);
+    switch (action) {
+      case PlayerActions.next: {
+        const nextActiveIndex = Actions.get.next(activePlaylist.length, activeIndex);
+        get().setActiveMuse(activePlaylist[nextActiveIndex], nextActiveIndex);
+        break;
+      }
 
-      set({ activeMuse: activePlaylist[nextActiveIndex], activeMuseIndex: nextActiveIndex });
-    } else if (action === PlayerActions.previous) {
-      const nextActiveIndex = Actions.get.previous(activePlaylist.length, activeIndex);
-      console.log(nextActiveIndex);
+      case PlayerActions.previous: {
+        const nextActiveIndex = Actions.get.previous(activePlaylist.length, activeIndex);
+        get().setActiveMuse(activePlaylist[nextActiveIndex], nextActiveIndex);
+        break;
+      }
 
-      set({ activeMuse: activePlaylist[nextActiveIndex], activeMuseIndex: nextActiveIndex });
-    } else if (action === PlayerActions.playPause) {
-      await Actions.playPause(get().player);
+      case PlayerActions.playPause: {
+        await Actions.playPause(get().player, get().setPlayState);
+      }
+
+      default:
+        return;
     }
   },
 }));
