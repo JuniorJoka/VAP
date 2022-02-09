@@ -7,7 +7,7 @@ Modern media player for modern people
 Clone the project
 
 ```bash
-  git clone https://github.com/JuniorJoka/VAP.git
+  git clone https://github.com/JuniorJoka/moth.git
 ```
 
 Go to the project directory
