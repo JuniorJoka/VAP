@@ -1,4 +1,4 @@
-# VAP
+# moth
 
 Modern media player for modern people
 

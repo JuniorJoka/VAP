@@ -1,5 +1,5 @@
 {
-  "name": "VAP",
+  "name": "moth",
   "version": "1.0.0",
   "description": "Modern media player for modern people",
   "main": "main/electron-src/index.js",
