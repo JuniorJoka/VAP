@@ -1,10 +1,10 @@
-import { Player } from "./player";
+import Player from './player';
 
-export class VideoPlayer extends Player {
+export default class VideoPlayer extends Player {
   video: HTMLVideoElement;
 
   constructor() {
-    super(document.createElement("video"));
+    super(document.createElement('video'));
     this.video = this.getMedia() as HTMLVideoElement;
   }
 }

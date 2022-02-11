@@ -1,15 +1,24 @@
-import { MuseMeta } from "../../../shared/types/moth";
-import { MuseState } from "../../lib/types";
-import useMuseStore from "../../store/useMuseStore";
+import { MuseMeta } from '../../../shared/types/moth';
+import { MuseState } from '../../lib/types';
+import useMuseStore from '../../store/useMuseStore';
 
 const selector = (
-  state: MuseState
-): [(track: MuseMeta, index: number) => void, (activePlaylist: MuseMeta[]) => void] => [
+  state: MuseState,
+): [(track: MuseMeta, index: number) => void, (activePlaylist: MuseMeta[]
+  ) => void] => [
   state.setActiveMuse,
   state.setActivePlayList,
 ];
 
-export const Track = ({ track, index, playlist }: { track: MuseMeta; index: number; playlist: MuseMeta[] }) => {
+export default function Track({
+  track,
+  index,
+  playlist,
+}: {
+  track: MuseMeta;
+  index: number;
+  playlist: MuseMeta[];
+}) {
   const [activateTrack, activatePlaylist] = useMuseStore(selector);
 
   const activate = () => {
@@ -22,10 +31,14 @@ export const Track = ({ track, index, playlist }: { track: MuseMeta; index: numb
       className="hover:bg-gray-100 rounded-lg p-3 pr-6 pl-6 grid grid-cols-2 cursor-pointer align hover:shadow-md"
       onClick={activate}
     >
-      <div className="flex items-center space-x-3  w-64">
-        <div className="w-10 h-10 bg-slate-500" />
+      <div className="flex items-center space-x-3  w-96 bg-green-600">
+        <div className="w-16 h-16 bg-slate-300 flex justify-center items-center">
+          <div className="flex justify-center items-center bg-slate-400 w-12 h-12 rounded-full" />
+        </div>
         <div>
-          <p className="font-bold">{track.title}</p>
+          <p className="w-80 font-bold overflow-hidden text-ellipsis whitespace-nowrap">
+            {track.title}
+          </p>
           <p className="text-sm">{track.artist}</p>
         </div>
       </div>
@@ -35,4 +48,4 @@ export const Track = ({ track, index, playlist }: { track: MuseMeta; index: numb
       </div>
     </div>
   );
-};
+}

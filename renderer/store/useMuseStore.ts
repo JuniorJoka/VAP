@@ -1,9 +1,9 @@
-import create from "zustand";
-import channel from "../../shared/lib/ipc-channels";
-import { MuseMeta } from "../../shared/types/moth";
-import { AudioPlayer } from "../lib/audioPayer";
-import { MuseMapper, MuseState, PlayerActions, PlayState } from "../lib/types";
-import { Actions, groupBy } from "./utils";
+import create from 'zustand';
+import channel from '../../shared/lib/ipc-channels';
+import { MuseMeta } from '../../shared/types/moth';
+import AudioPlayer from '../lib/audioPayer';
+import { MuseMapper, MuseState, PlayerActions, PlayState } from '../lib/types';
+import { Actions, groupBy } from './utils';
 
 export default create<MuseState>((set, get) => ({
   Muse: [],
@@ -27,12 +27,12 @@ export default create<MuseState>((set, get) => ({
   },
 
   groupByArtist: () => {
-    const MuseByArtist: MuseMapper = groupBy(get().Muse, "artist");
+    const MuseByArtist: MuseMapper = groupBy(get().Muse, 'artist');
     set({ MuseByArtist });
   },
 
   groupByAlbum: () => {
-    const MuseByAlbum: MuseMapper = groupBy(get().Muse, "album");
+    const MuseByAlbum: MuseMapper = groupBy(get().Muse, 'album');
     set({ MuseByAlbum });
   },
 
@@ -66,10 +66,10 @@ export default create<MuseState>((set, get) => ({
 
       case PlayerActions.playPause: {
         await Actions.playPause(get().player, get().setPlayState);
+        break;
       }
 
       default:
-        return;
     }
   },
 }));

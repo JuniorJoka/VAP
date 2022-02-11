@@ -1,17 +1,20 @@
-import { useEffect } from "react";
-import { MuseMeta } from "../../shared/types/moth";
-import { AudioPlayer } from "../lib/audioPayer";
-import { MuseState, PlayerActions, PlayState } from "../lib/types";
-import useMuseStore from "../store/useMuseStore";
+import { useEffect } from 'react';
+import { MuseMeta } from '../../shared/types/moth';
+import AudioPlayer from '../lib/audioPayer';
+import { MuseState, PlayerActions, PlayState } from '../lib/types';
+import useMuseStore from '../store/useMuseStore';
 
-const selector = (state: MuseState): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>, PlayState] => [
+const selector = (
+  state: MuseState,
+): [MuseMeta, AudioPlayer, (action: PlayerActions
+  ) => Promise<void>, PlayState] => [
   state.activeMuse,
   state.player,
   state.emit,
   state.playState,
 ];
 
-export const useMuseControls = (): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>] => {
+const useMuseControls = (): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>] => {
   const [active, player, emit, playState] = useMuseStore(selector);
 
   useEffect(() => {
@@ -26,3 +29,5 @@ export const useMuseControls = (): [MuseMeta, AudioPlayer, (action: PlayerAction
 
   return [active, player, emit];
 };
+
+export default useMuseControls;

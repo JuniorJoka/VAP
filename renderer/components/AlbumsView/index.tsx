@@ -1,11 +1,14 @@
-import { useEffect } from "react";
-import { MuseMapper, MuseState } from "../../lib/types";
-import useMuseStore from "../../store/useMuseStore";
-import { Section } from "../Section";
+import { useEffect } from 'react';
+import { MuseMapper, MuseState } from '../../lib/types';
+import useMuseStore from '../../store/useMuseStore';
+import Section from '../Section';
 
-const selector = (state: MuseState): [MuseMapper, VoidFunction] => [state.MuseByAlbum, state.groupByAlbum];
+const selector = (state: MuseState): [MuseMapper, VoidFunction] => [
+  state.MuseByAlbum,
+  state.groupByAlbum,
+];
 
-export const AlbumsView = () => {
+export default function AlbumsView() {
   const [data, func] = useMuseStore(selector);
   useEffect(() => {
     func();
@@ -20,4 +23,4 @@ export const AlbumsView = () => {
         ))}
     </div>
   );
-};
+}

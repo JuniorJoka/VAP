@@ -1,5 +1,5 @@
-import { MuseMeta } from "../../../shared/types/moth";
-import { AudioPlayer } from "../audioPayer";
+import { MuseMeta } from '../../../shared/types/moth';
+import AudioPlayer from '../audioPayer';
 
 export enum PlayState {
   playing,

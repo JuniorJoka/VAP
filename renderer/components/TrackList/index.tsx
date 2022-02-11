@@ -1,10 +1,10 @@
-import { MuseState } from "../../lib/types";
-import useMuseStore from "../../store/useMuseStore";
-import { Track } from "../Track";
+import { MuseState } from '../../lib/types';
+import useMuseStore from '../../store/useMuseStore';
+import Track from '../Track';
 
 const selector = (state: MuseState) => state.Muse;
 
-export const TrackList = () => {
+export default function TrackList() {
   const tracks = useMuseStore(selector);
   return (
     <div>
@@ -13,4 +13,4 @@ export const TrackList = () => {
       ))}
     </div>
   );
-};
+}

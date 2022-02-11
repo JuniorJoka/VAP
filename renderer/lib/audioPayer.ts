@@ -1,9 +1,9 @@
-import { Player } from "./player";
+import Player from './player';
 
-export class AudioPlayer extends Player {
+export default class AudioPlayer extends Player {
   audio: HTMLAudioElement;
 
-  constructor(options?) {
+  constructor() {
     super(new Audio());
     this.audio = this.getMedia();
   }

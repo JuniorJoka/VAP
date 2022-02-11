@@ -1,5 +1,6 @@
-export class Player {
+export default class Player {
   media: HTMLAudioElement | HTMLVideoElement;
+
   constructor(media: HTMLAudioElement | HTMLVideoElement) {
     this.media = media;
   }
@@ -10,7 +11,7 @@ export class Player {
 
   async play(): Promise<void> {
     if (!this.media.src) {
-      throw new Error("");
+      throw new Error('');
     }
     await this.media.play();
   }

@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "airbnb-typescript"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -13,12 +14,23 @@
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./renderer/tsconfig.json"
     },
     "plugins": [
+        "prettier",
         "react",
         "@typescript-eslint"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "object-curly-newline": 0
+    },
+    "settings": {
+        "import/resolver":
+        {"node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
     }
 }

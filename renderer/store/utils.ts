@@ -1,6 +1,6 @@
-import { MuseMeta } from "../../shared/types/moth";
-import { AudioPlayer } from "../lib/audioPayer";
-import { MuseMapper, PlayState } from "../lib/types";
+import { MuseMeta } from '../../shared/types/moth';
+import AudioPlayer from '../lib/audioPayer';
+import { MuseMapper, PlayState } from '../lib/types';
 
 export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
   const MuseBy: MuseMapper = new Map();
@@ -10,7 +10,7 @@ export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
     const isNonLetter = initial.toLowerCase() === initial.toUpperCase();
     // replace non-character initials with a pound sign
     if (isNonLetter) {
-      initial = "#";
+      initial = '#';
     }
     // initialize non-existing keys to an empty array
     if (!MuseBy.has(initial)) {
@@ -22,6 +22,7 @@ export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
     existingData.set(muse[key], content);
 
     MuseBy.set(initial, existingData);
+    return null;
   });
 
   return MuseBy;
@@ -30,8 +31,12 @@ export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
 export const Actions = {
   get: {
     next: (size: number, currIndex: number): number => (currIndex + 1) % size,
-    previous: (size: number, currIndex: number): number => (currIndex - 1 < 0 ? size - 1 : currIndex - 1),
+    previous: (size: number, currIndex: number): number => {
+      if (currIndex - 1 < 0) return 0;
+      return currIndex - 1;
+    },
   },
+
   playPause: async (player: AudioPlayer, set: (playState: PlayState) => void) => {
     if (player.isPaused()) {
       await player.play();
