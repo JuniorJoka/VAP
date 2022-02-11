@@ -4,8 +4,8 @@ import useMuseStore from '../../store/useMuseStore';
 
 const selector = (
   state: MuseState,
-): [(track: MuseMeta, index: number) => void, (activePlaylist: MuseMeta[]
-  ) => void] => [
+  // eslint-disable-next-line function-paren-newline
+): [(track: MuseMeta, index: number) => void, (activePlaylist: MuseMeta[]) => void] => [
   state.setActiveMuse,
   state.setActivePlayList,
 ];
@@ -27,7 +27,8 @@ export default function Track({
   };
 
   return (
-    <div
+    <button
+      type="button"
       className="hover:bg-gray-100 rounded-lg p-3 pr-6 pl-6 grid grid-cols-2 cursor-pointer align hover:shadow-md"
       onClick={activate}
     >
@@ -46,6 +47,6 @@ export default function Track({
         <p>{track.album}</p>
         <p>{track.duration}</p>
       </div>
-    </div>
+    </button>
   );
 }

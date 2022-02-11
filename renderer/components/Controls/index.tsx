@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useDrag } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
+import { FaSearch } from 'react-icons/fa';
+
 import { PlayerActions } from '../../lib/types';
 import useMuseControls from '../../hooks/useMuseControls';
 
@@ -30,14 +33,29 @@ export default function Controls() {
           <div className="flex flex-col  items-center h-20">
             <div className="flex space-x-6 items-center mt-1">
               <div className="h-6 w-6 bg-slate-500" />
-              <div className="h-6 w-6 bg-slate-500" onClick={() => emit(PlayerActions.previous)} />
-              <div
+              <button
+                type="button"
+                className="h-6 w-6 bg-slate-500"
+                onClick={() => emit(PlayerActions.previous)}
+              >
+                <FaSearch />
+              </button>
+              <button
+                type="button"
                 className="h-12 w-12 bg-slate-500 rounded-full"
                 onClick={async () => {
                   await emit(PlayerActions.playPause);
                 }}
-              />
-              <div className="h-6 w-6 bg-slate-500" onClick={() => emit(PlayerActions.next)} />
+              >
+                <FaSearch />
+              </button>
+              <button
+                type="button"
+                className="h-6 w-6 bg-slate-500"
+                onClick={() => emit(PlayerActions.next)}
+              >
+                <FaSearch />
+              </button>
               <div className="h-6 w-6 bg-slate-500" />
             </div>
             <svg className="w-[700px] 16px mt-1" viewBox="0 -8 700 16 ">
@@ -52,7 +70,7 @@ export default function Controls() {
               <line
                 x1="10"
                 y1="0"
-                x2={x.animation.to}
+                x2={`${x.animation.to}`}
                 y2="0"
                 className="stroke-[5] stroke-slate-500"
                 strokeLinecap="round"
