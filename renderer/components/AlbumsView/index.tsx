@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { MuseMapper, MuseState } from '../../lib/types';
+import { MuseMap, MuseState } from '../../lib/types';
 import useMuseStore from '../../store/useMuseStore';
 import Section from '../Section';
 
-const selector = (state: MuseState): [MuseMapper, VoidFunction] => [
+const selector = (state: MuseState): [MuseMap, VoidFunction] => [
   state.MuseByAlbum,
   state.groupByAlbum,
 ];
