@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Content from '../components/Content';
 import Controls from '../components/Controls';
+import Dialog from '../components/SearchDialog';
 import SideBar from '../components/SideBar';
 import { MuseState } from '../lib/types';
 import useMuseStore from '../store/useMuseStore';
@@ -22,6 +23,7 @@ function IndexPage() {
       <SideBar />
       <Content />
       <Controls />
+      <Dialog />
     </main>
   );
 }
