@@ -2,7 +2,7 @@ import create from 'zustand';
 import channel from '../../shared/lib/ipc-channels';
 import { MuseMeta } from '../../shared/types/moth';
 import AudioPlayer from '../lib/audioPayer';
-import { MuseMapper, MuseState, PlayerActions, PlayState } from '../lib/types';
+import { MuseMap, MuseState, PlayerActions, PlayState } from '../lib/types';
 import { Actions, groupBy } from './utils';
 
 export default create<MuseState>((set, get) => ({
@@ -27,12 +27,12 @@ export default create<MuseState>((set, get) => ({
   },
 
   groupByArtist: () => {
-    const MuseByArtist: MuseMapper = groupBy(get().Muse, 'artist');
+    const MuseByArtist: MuseMap = groupBy(get().Muse, 'artist');
     set({ MuseByArtist });
   },
 
   groupByAlbum: () => {
-    const MuseByAlbum: MuseMapper = groupBy(get().Muse, 'album');
+    const MuseByAlbum: MuseMap = groupBy(get().Muse, 'album');
     set({ MuseByAlbum });
   },
 
@@ -53,19 +53,19 @@ export default create<MuseState>((set, get) => ({
 
     switch (action) {
       case PlayerActions.next: {
-        const nextActiveIndex = Actions.get.next(activePlaylist.length, activeIndex);
+        const nextActiveIndex = Actions.get.next(activePlaylist.length, activeIndex as number);
         get().setActiveMuse(activePlaylist[nextActiveIndex], nextActiveIndex);
         break;
       }
 
       case PlayerActions.previous: {
-        const nextActiveIndex = Actions.get.previous(activePlaylist.length, activeIndex);
+        const nextActiveIndex = Actions.get.previous(activePlaylist.length, activeIndex as number);
         get().setActiveMuse(activePlaylist[nextActiveIndex], nextActiveIndex);
         break;
       }
 
       case PlayerActions.playPause: {
-        await Actions.playPause(get().player, get().setPlayState);
+        await Actions.playPause(get().player as AudioPlayer, get().setPlayState);
         break;
       }
 
