@@ -1,9 +1,12 @@
 import { FaSearch } from 'react-icons/fa';
+import useDialog from '../../hooks/useDialog';
+import { DialogType } from '../../lib/types';
 
 export default function SideBar() {
+  const [, set] = useDialog(DialogType.search);
   return (
     <div className="border-r-[.5px] border-b-gray- px-4 space-y-4 text-xs">
-      <button className="flex items-center space-x-3" type="button">
+      <button className="flex items-center space-x-3" type="button" onClick={() => set(true)}>
         <div className="w-7 h-7 bg-slate-500 rounded-md grid place-items-center">
           <FaSearch />
         </div>
