@@ -1,3 +1,4 @@
+/* eslint-disable function-paren-newline */
 import { useEffect } from 'react';
 import { MuseMeta } from '../../shared/types/moth';
 import AudioPlayer from '../lib/audioPayer';
@@ -6,10 +7,9 @@ import useMuseStore from '../store/useMuseStore';
 
 const selector = (
   state: MuseState,
-): [MuseMeta, AudioPlayer, (action: PlayerActions
-  ) => Promise<void>, PlayState] => [
-  state.activeMuse,
-  state.player,
+): [MuseMeta, AudioPlayer, (action: PlayerActions) => Promise<void>, PlayState] => [
+  state.activeMuse as MuseMeta,
+  state.player as AudioPlayer,
   state.emit,
   state.playState,
 ];
