@@ -1,6 +1,12 @@
 import { MuseMeta } from '../../../shared/types/moth';
 import AudioPlayer from '../audioPayer';
 
+/*
+    ========================================================================
+                              Muse State Types
+    ========================================================================
+ */
+
 export enum PlayState {
   playing,
   paused,
@@ -11,14 +17,17 @@ export enum PlayerActions {
   previous,
   playPause,
 }
+
+export type MuseMap = Map<string, Map<string, MuseMeta[]>>;
+
 export interface MuseState {
   Muse: MuseMeta[];
-  activeMuse: MuseMeta;
-  activeMuseIndex: number;
+  activeMuse: MuseMeta | undefined;
+  activeMuseIndex: number | undefined;
   activePlayList: MuseMeta[];
-  MuseByAlbum: MuseMapper;
-  MuseByArtist: MuseMapper;
-  player: AudioPlayer;
+  MuseByAlbum: MuseMap;
+  MuseByArtist: MuseMap;
+  player: AudioPlayer | undefined;
   playState: PlayState;
   populateMuse: VoidFunction;
   groupByAlbum: VoidFunction;
@@ -30,4 +39,28 @@ export interface MuseState {
   emit: (action: PlayerActions) => Promise<void>;
 }
 
-export type MuseMapper = Map<string, Map<string, MuseMeta[]>>;
+/*
+    ========================================================================
+                            Dialog State Types
+    ========================================================================
+ */
+
+export enum DialogType {
+  search,
+}
+
+export interface Dialog {
+  open: boolean;
+}
+
+export type DialogMap = Map<DialogType, Dialog>;
+
+export type GetFunc = (type: DialogType) => Dialog;
+
+export type SetFunc = (type: DialogType, value: boolean) => void;
+export interface DialogState {
+  storeStates: DialogMap;
+  currentlyOpen: string;
+  get: GetFunc;
+  set: SetFunc;
+}
