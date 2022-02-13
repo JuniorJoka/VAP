@@ -1,9 +1,10 @@
 import { MuseMeta } from '../../shared/types/moth';
 import AudioPlayer from '../lib/audioPayer';
-import { MuseMapper, PlayState } from '../lib/types';
+import DIALOGS from '../lib/constants/dialogs';
+import { MuseMap, PlayState } from '../lib/types';
 
-export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
-  const MuseBy: MuseMapper = new Map();
+export const groupBy = (items: MuseMeta[], key: string): MuseMap => {
+  const MuseBy: MuseMap = new Map();
 
   items.map((muse) => {
     let initial = muse[key][0].toUpperCase();
@@ -17,7 +18,7 @@ export const groupBy = (items: MuseMeta[], key: string): MuseMapper => {
       MuseBy.set(initial, new Map());
     }
 
-    const existingData = MuseBy.get(initial);
+    const existingData = MuseBy.get(initial) as Map<string, MuseMeta[]>;
     const content = (existingData.get(muse[key]) || []).concat(muse);
     existingData.set(muse[key], content);
 
@@ -46,4 +47,14 @@ export const Actions = {
       set(PlayState.paused);
     }
   },
+};
+
+const defaultDialog = {
+  open: false,
+};
+
+export const storeInit = () => {
+  const result = new Map();
+  DIALOGS.map((storeName) => result.set(storeName, defaultDialog));
+  return result;
 };
