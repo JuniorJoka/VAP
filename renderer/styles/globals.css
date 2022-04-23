@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .shadow-border {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+  }
+  .shadow-border-sm {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px inset;
+  }
+
+  .shadow-border-out {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px;
+  }
+}
