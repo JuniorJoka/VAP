@@ -1,4 +1,5 @@
 import { MuseMeta } from '../../../shared/types/moth';
+import Card from '../Card';
 
 interface SectionI {
   head: string;
@@ -11,10 +12,7 @@ export default function Section({ head, data }: SectionI) {
       <div>{head}</div>
       <div className="flex">
         {Array.from(data.keys()).map((val) => (
-          <div className="w-26 mx-4">
-            <div className="h-40 w-40 bg-green-500" />
-            <p className="w-24">{val}</p>
-          </div>
+          <Card primaryText={val} secondaryText={''} />
         ))}
       </div>
     </div>
