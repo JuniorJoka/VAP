@@ -18,17 +18,19 @@ export default function Dialog() {
       {transition(
         (styles, item) =>
           item && (
-            <animated.div
-              style={{ opacity: styles.opacity, pointerEvents: styles.pointerEvents }}
-              className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-slate-900 bg-opacity-20"
-            >
-              <animated.div className="fixed w-[32rem] h-24 top-14 ">
-                <div className="flex items-center bg-white rounded-md">
-                  <FaSearch className="absolute translate-x-2" onClick={() => set(!open)} />
+            <animated.div style={{ opacity: styles.opacity, pointerEvents: styles.pointerEvents }}>
+              <animated.div
+                className="fixed top-0 left-0 right-0 bottom-0 opacity-20 bg-slate-600"
+                onClick={() => set(!open)}
+              />
+              <animated.div className="fixed  h-12 w-6/12  top-10 left-1/2 translate-x-[-50%] bottom-0">
+                <div className="flex items-center  rounded-md">
+                  <FaSearch className="absolute translate-x-2" />
                   <input
                     type="text"
                     name="search"
                     id="search"
+                    placeholder="Search"
                     className="w-full h-10 rounded-md pl-7 "
                   />
                 </div>
