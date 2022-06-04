@@ -1,5 +1,5 @@
 import { MuseMeta } from '../../../shared/types/moth';
-import AudioPlayer from '../audioPayer';
+import AudioPlayer from '../audioPlayer';
 
 /*
     ========================================================================
@@ -47,6 +47,7 @@ export interface MuseState {
 
 export enum DialogType {
   search,
+  detail,
 }
 
 export interface Dialog {
