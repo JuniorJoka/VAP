@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import React, { ReactElement, ReactNode } from 'react';
 import '../styles/globals.css';
+import SearchDialog from '../components/SearchDialog';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -15,7 +16,12 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <SearchDialog />
+    </>
+  );
 }
 
 export default App;
