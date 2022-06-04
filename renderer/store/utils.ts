@@ -1,5 +1,5 @@
 import { MuseMeta } from '../../shared/types/moth';
-import AudioPlayer from '../lib/audioPayer';
+import AudioPlayer from '../lib/audioPlayer';
 import DIALOGS from '../lib/constants/dialogs';
 import { MuseMap, PlayState } from '../lib/types';
 

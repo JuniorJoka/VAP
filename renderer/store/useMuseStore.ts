@@ -1,7 +1,8 @@
 import create from 'zustand';
 import channel from '../../shared/lib/ipc-channels';
 import { MuseMeta } from '../../shared/types/moth';
-import AudioPlayer from '../lib/audioPayer';
+import { audioPlayer } from '../globals';
+import AudioPlayer from '../lib/audioPlayer';
 import { MuseMap, MuseState, PlayerActions, PlayState } from '../lib/types';
 import { Actions, groupBy } from './utils';
 
@@ -40,7 +41,7 @@ export default create<MuseState>((set, get) => ({
     set({ activeMuse: muse, activeMuseIndex: index });
   },
 
-  initializePlayer: () => set({ player: new AudioPlayer() }),
+  initializePlayer: () => set({ player: audioPlayer }),
 
   setPlayState: (playState: PlayState) => set({ playState }),
 
