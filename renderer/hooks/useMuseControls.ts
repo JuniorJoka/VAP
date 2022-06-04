@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 import { useEffect } from 'react';
 import { MuseMeta } from '../../shared/types/moth';
-import AudioPlayer from '../lib/audioPayer';
+import AudioPlayer from '../lib/audioPlayer';
 import { MuseState, PlayerActions, PlayState } from '../lib/types';
 import useMuseStore from '../store/useMuseStore';
 
