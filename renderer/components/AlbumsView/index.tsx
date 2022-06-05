@@ -1,26 +1,18 @@
-import { useEffect } from 'react';
-import { MuseMap, MuseState } from '../../lib/types';
-import useMuseStore from '../../store/useMuseStore';
 import Section from '../Section';
-
-const selector = (state: MuseState): [MuseMap, VoidFunction] => [
-  state.MuseByAlbum,
-  state.groupByAlbum,
-];
+import useMuse, { Muse } from '../../hooks/useMuse';
 
 export default function AlbumsView() {
-  const [data, func] = useMuseStore(selector);
-  useEffect(() => {
-    func();
-  }, []);
+  const data = useMuse(Muse.album);
 
-  return (
-    <div>
-      {Array.from(data.keys())
-        .sort()
-        .map((key) => (
-          <Section head={key} key={key} data={data.get(key)} />
-        ))}
-    </div>
-  );
+  if (data) {
+    return (
+      <div>
+        {Array.from(data.keys())
+          .sort()
+          .map((key) => (
+            <Section head={key} key={key} data={data.get(key)} />
+          ))}
+      </div>
+    );
+  }
 }

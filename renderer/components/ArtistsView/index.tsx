@@ -1,26 +1,17 @@
-import { useEffect } from 'react';
-import { MuseMap, MuseState } from '../../lib/types';
-import useMuseStore from '../../store/useMuseStore';
 import Section from '../Section';
-
-const selector = (state: MuseState): [MuseMap, VoidFunction] => [
-  state.MuseByArtist,
-  state.groupByArtist,
-];
+import useMuse, { Muse } from '../../hooks/useMuse';
 
 export default function ArtistsView() {
-  const [data, fn] = useMuseStore(selector);
-  useEffect(() => {
-    fn();
-  }, []);
-
-  return (
-    <div>
-      {Array.from(data.keys())
-        .sort()
-        .map((key) => (
-          <Section head={key} key={key} data={data.get(key)} />
-        ))}
-    </div>
-  );
+  const data = useMuse(Muse.artists);
+  if (data) {
+    return (
+      <div>
+        {Array.from(data.keys())
+          .sort()
+          .map((key) => (
+            <Section head={key} key={key} data={data.get(key)} />
+          ))}
+      </div>
+    );
+  }
 }
