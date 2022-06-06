@@ -1,4 +1,3 @@
-import { timeStamp } from 'console';
 import EventEmitter from 'events';
 import { threadId } from 'worker_threads';
 import Audio from './audio';
@@ -84,6 +83,11 @@ export default class AudioPlayer extends EventEmitter {
     }
   }
 
+  isPaused() {
+    // TODO: implement
+    return false;
+  }
+
   stop() {
     const { audio } = this;
 
@@ -110,6 +114,11 @@ export default class AudioPlayer extends EventEmitter {
 
   hasAudio() {
     return !!this.getAudio();
+  }
+
+  setSrc(src: string) {
+    // TODO: implement func
+    return;
   }
 
   setVolume(val) {
