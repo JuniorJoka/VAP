@@ -1,6 +1,6 @@
 import create from 'zustand';
-import { Dialog, DialogState, DialogType } from '../lib/types';
-import { storeInit } from './utils';
+import DialogState, { Dialog, DialogType } from './Dialog.types';
+import { storeInit } from '../utils';
 
 export default create<DialogState>((set, get) => ({
   storeStates: storeInit(),

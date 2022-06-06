@@ -1,10 +1,9 @@
 import create from 'zustand';
-import channel from '../../shared/lib/ipc-channels';
-import { MuseMeta } from '../../shared/types/moth';
-import { audioPlayer } from '../globals';
-import AudioPlayer from '../lib/audioPlayer';
-import { MuseMap, MuseState, PlayerActions, PlayState } from '../lib/types';
-import { Actions, groupBy } from './utils';
+import channel from '../../../shared/lib/ipc-channels';
+import { MuseMeta } from '../../../shared/types/moth';
+import AudioPlayer from '../../lib/audioPlayer';
+import MuseState, { MuseMap, PlayerActions, PlayState } from './Muse.types';
+import { Actions, groupBy } from '../utils';
 
 export default create<MuseState>((set, get) => ({
   Muse: [],
@@ -41,7 +40,8 @@ export default create<MuseState>((set, get) => ({
     set({ activeMuse: muse, activeMuseIndex: index });
   },
 
-  initializePlayer: () => set({ player: audioPlayer }),
+  // TODO: Assign proper instance of audio player to player
+  initializePlayer: () => set({ player: undefined }),
 
   setPlayState: (playState: PlayState) => set({ playState }),
 
