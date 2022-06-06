@@ -2,7 +2,7 @@
 import { useTransition, animated } from '@react-spring/web';
 import { FaChevronLeft } from 'react-icons/fa';
 import useDialog from '../../hooks/useDialog';
-import { DialogType } from '../../lib/types';
+import { DialogType } from '../../store/Dialog';
 import Controls from '../Controls/Controls';
 
 export default function Dialog() {

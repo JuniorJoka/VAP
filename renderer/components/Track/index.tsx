@@ -1,6 +1,5 @@
 import { MuseMeta } from '../../../shared/types/moth';
-import { MuseState } from '../../lib/types';
-import useMuseStore from '../../store/useMuseStore';
+import useMuseStore, { MuseState } from '../../store/Muse';
 
 const selector = (
   state: MuseState,

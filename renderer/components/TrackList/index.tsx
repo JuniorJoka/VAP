@@ -1,5 +1,4 @@
-import { MuseState } from '../../lib/types';
-import useMuseStore from '../../store/useMuseStore';
+import useMuseStore, { MuseState } from '../../store/Muse';
 import Track from '../Track/Track';
 
 const selector = (state: MuseState) => state.Muse;

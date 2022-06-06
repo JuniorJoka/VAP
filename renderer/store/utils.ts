@@ -1,7 +1,8 @@
 import { MuseMeta } from '../../shared/types/moth';
 import AudioPlayer from '../lib/audioPlayer';
 import DIALOGS from '../lib/constants/dialogs';
-import { MuseMap, PlayState } from '../lib/types';
+import { MuseMap, PlayState } from './Muse';
+import { DialogType } from './Dialog';
 
 export const groupBy = (items: MuseMeta[], key: string): MuseMap => {
   const MuseBy: MuseMap = new Map();
@@ -55,6 +56,7 @@ const defaultDialog = {
 
 export const storeInit = () => {
   const result = new Map();
-  DIALOGS.map((storeName) => result.set(storeName, defaultDialog));
+  // TODO: Investigate reason constant DIALOGS emits error
+  [0, 1].map((storeName) => result.set(storeName, defaultDialog));
   return result;
 };

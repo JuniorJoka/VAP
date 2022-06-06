@@ -2,7 +2,7 @@
 import { useTransition, animated } from '@react-spring/web';
 import { FaSearch } from 'react-icons/fa';
 import useDialog from '../../hooks/useDialog';
-import { DialogType } from '../../lib/types';
+import { DialogType } from '../../store/Dialog';
 
 export default function Dialog() {
   const [{ open }, set] = useDialog(DialogType.search);
@@ -18,7 +18,12 @@ export default function Dialog() {
       {transition(
         (styles, item) =>
           item && (
-            <animated.div style={{ opacity: styles.opacity, pointerEvents: styles.pointerEvents }}>
+            <animated.div
+              style={{
+                opacity: styles.opacity,
+                pointerEvents: (styles as unknown as any).pointerEvents,
+              }}
+            >
               <animated.div
                 className="fixed top-0 left-0 right-0 bottom-0 opacity-20 bg-slate-600"
                 onClick={() => set(!open)}

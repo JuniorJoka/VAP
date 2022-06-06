@@ -1,5 +1,10 @@
-import { Dialog, DialogMap, DialogState, DialogType, SetFunc } from '../lib/types';
-import useDialogStore from '../store/useDialogStore';
+import useDialogStore, {
+  Dialog,
+  DialogMap,
+  DialogState,
+  DialogType,
+  SetFunc,
+} from '../store/Dialog';
 
 const selector = (state: DialogState): [DialogMap, SetFunc] => [state.storeStates, state.set];
 

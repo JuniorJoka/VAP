@@ -2,8 +2,7 @@
 import { useEffect } from 'react';
 import { MuseMeta } from '../../shared/types/moth';
 import AudioPlayer from '../lib/audioPlayer';
-import { MuseState, PlayerActions, PlayState } from '../lib/types';
-import useMuseStore from '../store/useMuseStore';
+import useMuseStore, { MuseState, PlayerActions, PlayState } from '../store/Muse';
 
 const selector = (
   state: MuseState,

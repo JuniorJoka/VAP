@@ -8,7 +8,7 @@ import {
   BsStack,
 } from 'react-icons/bs';
 import useDialog from '../../hooks/useDialog';
-import { DialogType } from '../../lib/types';
+import { DialogType } from '../../store/Dialog';
 import Link from 'next/link';
 
 export default function SideBar() {

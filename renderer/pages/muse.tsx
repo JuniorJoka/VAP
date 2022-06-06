@@ -3,8 +3,7 @@ import Content from '../components/Content';
 import Controls from '../components/Controls/Controls';
 import DetailDialog from '../components/DetailDialog';
 import SideBar from '../components/SideBar';
-import { MuseState } from '../lib/types';
-import useMuseStore from '../store/useMuseStore';
+import useMuseStore, { MuseState } from '../store/Muse';
 
 // population func selector
 const selector = (state: MuseState) => [state.populateMuse, state.initializePlayer];
